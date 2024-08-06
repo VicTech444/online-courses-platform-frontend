@@ -7,7 +7,7 @@ interface Props {
   rows?: number;
   minLength: number;
   gridSpace: string;
-  rememberMe: boolean;
+  rememberMe?: boolean;
 }
 
 export const FormInputItem = (props: Props) => {
