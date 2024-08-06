@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FormInputProps } from "@/interfaces/interfaces";
 
 export const SignForm = ({FormInput}: {FormInput: FormInputProps[]}) => {
-  const [policy, setPolicy] = useState(true);
+  const [policy, setPolicy] = useState(false);
   const [isError, setIsError] = useState(false);
   const [Error, setError] = useState("Unknown");
 
