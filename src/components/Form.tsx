@@ -1,15 +1,13 @@
 import { type FormEventHandler, useState } from "react";
 import { FormInputItem } from "./FormInputItem";
-import { useFormItemList } from "../helpers/useFormItemLists";
 import { validateFormInputs } from "../helpers/validateFormInputs";
 import Link from "next/link";
+import { FormInputProps } from "@/interfaces/interfaces";
 
-export const LoginForm = () => {
+export const LoginForm = ({FormInput}: {FormInput: FormInputProps[]}) => {
   const [rememberMe, setRememberMe] = useState(true);
   const [isError, setIsError] = useState(false);
   const [Error, setError] = useState("Unknown");
-
-  let formInputList = useFormItemList();
 
   const handleValidation: FormEventHandler<HTMLFormElement> = (ev) => {
     ev.preventDefault();
@@ -37,7 +35,7 @@ export const LoginForm = () => {
       itemScope
       itemType="https://schema.org/CommunicateAction"
     >
-      {formInputList.map((item) => (
+      {FormInput.map((item) => (
         <>
           <FormInputItem {...item} rememberMe={rememberMe} />
         </>

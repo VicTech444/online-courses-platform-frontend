@@ -1,15 +1,6 @@
-interface Props {
-    labelText: string
-    nameID: string
-    type: string
-    placeholder: string
-    kind: "input" | "textarea"
-    rows?: number;
-    minLength: number;
-    gridSpace: string;
-}
+import { FormInputProps } from "@/interfaces/interfaces"
 
-export const useFormItemList = (): Props[] => {
+export const useFormItemList = (): FormInputProps[] => {
     return [
         {
             labelText: "Email Address",
