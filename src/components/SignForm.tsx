@@ -50,7 +50,7 @@ export const SignForm = ({FormInput}: {FormInput: FormInputProps[]}) => {
                 className=""
                 onChange={(ev) => setPolicy(ev.target.checked)}
               />{" "}
-              I read and I agree with the terms of use and privacy policy
+              I read and I agree with the  <Link href={'/terms/'} className="underline text-purple-500">terms of use and privacy policy</Link>
             </label>
           </div>
           <button
