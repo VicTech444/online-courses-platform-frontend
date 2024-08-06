@@ -2,7 +2,8 @@ export const validateFormInputs = (Divs: HTMLCollection): boolean | string => {
     let phoneExp = /^[\s\d()+-]+$/;
     let emailExp = /.+@...+.com\b/
 
-    let newDivs = [...Divs] as unknown as HTMLDivElement[];
+    let arrDivs = Divs as unknown as Element[];
+    let newDivs = [...arrDivs] as unknown as HTMLDivElement[];
     console.log(newDivs)
     if (!newDivs) return ('no input found')
     newDivs.pop()
