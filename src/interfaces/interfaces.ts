@@ -8,3 +8,18 @@ export interface FormInputProps {
     minLength: number;
     gridSpace: string;
 }
+
+export interface CoursesProps {
+    courses: Course[];
+}
+
+interface Course {
+    _id:          string;
+    title:        string;
+    category:     string;
+    description:  string;
+    image:        string;
+    instructorId: string;
+    lessons:      string[];
+    order:        number;
+}
