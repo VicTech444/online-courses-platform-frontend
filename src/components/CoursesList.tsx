@@ -20,7 +20,7 @@ export const CoursesList = ({queryResponse}: {queryResponse: UseQueryResult<Cour
         <div className="grid min-[1199px]:grid-cols-3">
             {
                 queryResponse.data?.courses.map(course => (
-                    <div className="px-4 pb-6 flex flex-col">
+                    <div className="px-4 pb-6 flex flex-col" key={course._id}>
                          <Image src={course.image} alt="Sample alt for images (all alts are the same)" className="object-cover aspect-video" width={500} height={320}/>
                          <div className="p-4 bg-black text-white flex flex-col gap-y-3">
                             <h3 className="text-[20px] font-bold">{course.title}</h3>
