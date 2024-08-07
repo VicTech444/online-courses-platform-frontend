@@ -19,7 +19,7 @@ export default function Home() {
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus eveniet optio velit? Laudantium accusamus dicta dignissimos harum corporis ad excepturi"
         />
       </div>
-      <Courses amountToShow={3} />
+      <Courses/>
     </main>
   );
 }
