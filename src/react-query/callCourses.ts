@@ -20,7 +20,7 @@ const coursesRequest = async (amountOfCourses: number | undefined): Promise<Cour
     }
 }
 
-export const coursesCallReactQuery = (amountOfCourses: number | undefined) => {
+export const useCallCourses = (amountOfCourses: number | undefined) => {
     let queryResponse = useQuery({
         queryKey: ['coursesData'],
         queryFn: () => coursesRequest(amountOfCourses),

@@ -1,7 +1,7 @@
 "use client"
 
 import { FC } from "react";
-import { coursesCallReactQuery } from "@/react-query/callCourses";
+import { useCallCourses } from "@/react-query/callCourses";
 import { CoursesList } from "./CoursesList";
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const Courses: FC<Props> = ({ amountToShow }) => {
-  let { queryResponse } = coursesCallReactQuery(amountToShow);
+  let { queryResponse } = useCallCourses(amountToShow);
   
   return (
     <section className="flex flex-col gap-y-10">
