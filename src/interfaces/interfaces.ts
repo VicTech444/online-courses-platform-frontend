@@ -22,4 +22,5 @@ interface Course {
     instructorId: string;
     lessons:      string[];
     order:        number;
+    nextPath: string;
 }
