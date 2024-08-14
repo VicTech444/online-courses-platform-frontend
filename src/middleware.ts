@@ -5,7 +5,7 @@ export const middleware = async (req: NextRequest) => {
 
     let redirectedRoutes = ['/courses']
     let protectedRoutes = [];
-    
+    console.log(pathname)
     if (redirectedRoutes.includes(pathname)){
         return NextResponse.redirect(new URL('/all-courses/', req.url))
     }
