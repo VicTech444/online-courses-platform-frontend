@@ -16,7 +16,7 @@ export interface CourseProps {
     courses: Course;
 }
 
-interface Course {
+export interface Course {
     _id: string;
     title: string;
     category: string;
@@ -31,10 +31,12 @@ interface Course {
 export interface LessonsProps {
     courses: Lessons[]
 }
-interface Lessons {
+
+export interface Lessons {
     _id: string;
     courseId: string;
     title: string;
     content: string;
     order: number;
+    lessonContent: string;
 }
