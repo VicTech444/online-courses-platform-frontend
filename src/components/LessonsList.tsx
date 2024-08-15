@@ -4,9 +4,10 @@ import { usePathname } from "next/navigation";
 import { useCallLesson } from "@/react-query/callLesson";
 import { useCallCourse } from "@/react-query/callCourse";
 import Image from "next/image";
-import { CourseContext } from "@/app/layout";
+
 import { useContext, useEffect } from "react";
 import Link from "next/link";
+import { CourseContext } from "@/context/courseContext";
 
 export const LessonsList = () => {
   const url = usePathname();
