@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { CourseContext } from "@/app/layout";
+
 import { useContext, useEffect, useState } from "react";
 import { Course, Lessons } from "@/interfaces/interfaces";
 import ReactMarkdown from "react-markdown";
@@ -9,6 +9,7 @@ import "@/styles/markdown.css";
 import React from "react";
 import { PercentageBar } from "@/components/PercentageBar";
 import { PercentageCircular } from "@/components/PercentageCircle";
+import { CourseContext } from "@/context/courseContext";
 
 const CourseDetails = () => {
   let { courseContext } = useContext(CourseContext);

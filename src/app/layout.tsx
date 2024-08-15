@@ -1,13 +1,13 @@
 "use client";
 
 import { Inter } from "next/font/google";
-import { createContext, useState } from "react";
+import { useState } from "react";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { CourseContext } from "@/context/courseContext";
 
 const inter = Inter({ subsets: ["latin"] });
-export const CourseContext = createContext<any>(null);
 
 export default function RootLayout({
   children,
