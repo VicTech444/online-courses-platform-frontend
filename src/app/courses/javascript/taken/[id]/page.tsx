@@ -22,7 +22,7 @@ const CourseDetails = () => {
   }: { courseInfo: Course; lessonsInfo: Lessons[] } = courseContext;
   let [content, setContent] = useState<string | null>(null);
 
-  useEffect(() => setContent(lessonsInfo[0].lessonContent), []);
+  useEffect(() => setContent(lessonsInfo[0].lessonContent), [lessonsInfo]);
 
   return (
     <div className="flex">
