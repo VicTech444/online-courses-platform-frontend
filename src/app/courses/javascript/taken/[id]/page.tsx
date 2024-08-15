@@ -37,6 +37,7 @@ const CourseDetails = () => {
               <div
                 onClick={() => setContent(lesson.lessonContent)}
                 className="flex items-end gap-x-2 cursor-pointer"
+                key={lesson._id}
               >
                 <PercentageCircular />
                 Lesson {lesson.order}: {lesson.title}
