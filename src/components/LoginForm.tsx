@@ -36,9 +36,7 @@ export const LoginForm = ({FormInput}: {FormInput: FormInputProps[]}) => {
       itemType="https://schema.org/CommunicateAction"
     >
       {FormInput.map((item) => (
-        <>
           <FormInputItem {...item} rememberMe={rememberMe} key={item.nameID}/>
-        </>
       ))}
       <div className="flex flex-col justify-center gap-y-2">
         <div className="flex flex-col gap-y-6">

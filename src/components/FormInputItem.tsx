@@ -29,6 +29,7 @@ export const FormInputItem = (props: Props) => {
       itemProp="object"
       itemScope
       itemType="https://schema.org/PropertyValue"
+      key={nameID}
     >
       <label htmlFor={nameID} className="text-base font-bold text-white">
         {labelText}
