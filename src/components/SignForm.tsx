@@ -38,7 +38,7 @@ export const SignForm = ({FormInput}: {FormInput: FormInputProps[]}) => {
     >
       {FormInput.map((item) => (
         <>
-          <FormInputItem {...item}/>
+          <FormInputItem {...item} key={item.nameID}/>
         </>
       ))}
       <div className="flex flex-col justify-center gap-y-2">

@@ -37,7 +37,7 @@ export const LoginForm = ({FormInput}: {FormInput: FormInputProps[]}) => {
     >
       {FormInput.map((item) => (
         <>
-          <FormInputItem {...item} rememberMe={rememberMe} />
+          <FormInputItem {...item} rememberMe={rememberMe} key={item.nameID}/>
         </>
       ))}
       <div className="flex flex-col justify-center gap-y-2">
