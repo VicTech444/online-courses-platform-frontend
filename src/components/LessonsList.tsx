@@ -33,7 +33,7 @@ export const LessonsList = () => {
   if (LessonResponse.error) {
     return <div>Error while loading the content, try again later</div>;
   }
-  console.log(courseResponse)
+
   return (
     <div className="flex justify-between">
       <div className="flex flex-col gap-y-8">
