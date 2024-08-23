@@ -12,6 +12,7 @@ import { PercentageCircular } from "@/components/PercentageCircle";
 import { CourseContext } from "@/context/courseContext";
 
 const CourseDetails = () => {
+  let [content, setContent] = useState<string | null>(null);
   let { courseContext } = useContext(CourseContext);
   const router = useRouter();
   if (!courseContext) {
@@ -24,7 +25,6 @@ const CourseDetails = () => {
     courseInfo,
     lessonsInfo,
   }: { courseInfo: Course; lessonsInfo: Lessons[] } = courseContext;
-  let [content, setContent] = useState<string | null>(null);
 
   useEffect(() => setContent(lessonsInfo[0].lessonContent), [lessonsInfo]);
 
@@ -40,7 +40,7 @@ const CourseDetails = () => {
             return (
               <div
                 onClick={() => setContent(lesson.lessonContent)}
-                className="flex items-end gap-x-2 cursor-pointer"
+                className="flex cursor-pointer items-end gap-x-2"
                 key={lesson._id}
               >
                 <PercentageCircular />
@@ -50,7 +50,7 @@ const CourseDetails = () => {
           })}
         </div>
       </aside>
-      <main className="flex h-[90.8vh] flex-col py-4 pr-4 w-full">
+      <main className="flex h-[90.8vh] w-full flex-col py-4 pr-4">
         <div className="markdown-content max-h-[80vh] overflow-y-scroll bg-[#1D1D1D] px-4 py-8">
           <ReactMarkdown>{content}</ReactMarkdown>
         </div>
