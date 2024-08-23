@@ -14,7 +14,7 @@ export const middleware = async (req: NextRequest) => {
 
         let loginCookie = cookie.get('login');
 
-        if (!loginCookie) return NextResponse.redirect(new URL('/sign/', req.url));
+        if (!loginCookie) return NextResponse.redirect(new URL('/log/', req.url));
 
         try {
             const {payload} = await jose.jwtVerify(loginCookie.value, new TextEncoder().encode(process.env.JWT_SECRET));
