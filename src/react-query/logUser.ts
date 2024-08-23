@@ -11,7 +11,7 @@ export const logUser = async ({ email, password }: userCreate) => {
 
         let res = await mongoInstance.post('/log/logUser', { email, password });
         if (res.status >= 200 || res.status <= 299) {
-            window.location.replace('/all-courses/')  
+           
         }
     } catch (error: any) {
         if (error instanceof AxiosError){
