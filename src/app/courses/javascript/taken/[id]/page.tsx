@@ -15,11 +15,6 @@ const CourseDetails = () => {
   let [content, setContent] = useState<string | null>(null);
   let { courseContext } = useContext(CourseContext);
   const router = useRouter();
-  if (!courseContext) {
-    router.push("/courses/");
-    setTimeout(() => window.location.reload(), 1000);
-    return;
-  }
 
   let {
     courseInfo,
@@ -27,6 +22,12 @@ const CourseDetails = () => {
   }: { courseInfo: Course; lessonsInfo: Lessons[] } = courseContext;
 
   useEffect(() => setContent(lessonsInfo[0].lessonContent), [lessonsInfo]);
+  
+  if (!courseContext) {
+    router.push("/courses/");
+    setTimeout(() => window.location.reload(), 1000);
+    return;
+  }
 
   return (
     <div className="flex">
