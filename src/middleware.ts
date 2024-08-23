@@ -9,18 +9,18 @@ export const middleware = async (req: NextRequest) => {
     const isFile = pathname.match(/\.[^\/]+$/);
 
 
-    // if (courseProtectedRoutes.test(pathname) && !isFile){
-    //     const cookie = cookies();
+    if (courseProtectedRoutes.test(pathname) && !isFile){
+        const cookie = cookies();
 
-    //     let loginCookie = cookie.get('login');
-    //     console.log(loginCookie)
-    //     if (!loginCookie) return NextResponse.redirect(new URL('/log/', req.url));
+        let loginCookie = cookie.get('login');
+        console.log(loginCookie)
+        // if (!loginCookie) return NextResponse.redirect(new URL('/log/', req.url));
 
-    //     try {
-    //         const {payload} = await jose.jwtVerify(loginCookie.value, new TextEncoder().encode(process.env.JWT_SECRET));
+        // try {
+        //     const {payload} = await jose.jwtVerify(loginCookie.value, new TextEncoder().encode(process.env.JWT_SECRET));
 
-    //     } catch (error) {
-    //         return NextResponse.redirect(new URL('/log', req.url))
-    //     }
-    // }
+        // } catch (error) {
+        //     return NextResponse.redirect(new URL('/log', req.url))
+        // }
+    }
 }
