@@ -14,8 +14,11 @@ import { CourseContext } from "@/context/courseContext";
 const CourseDetails = () => {
   let { courseContext } = useContext(CourseContext);
   const router = useRouter();
-
-  if (!courseContext) router.push("/courses/");
+  if (!courseContext) {
+    router.push("/courses/");
+    setTimeout(() => window.location.reload(), 1000);
+    return;
+  }
 
   let {
     courseInfo,
@@ -47,7 +50,7 @@ const CourseDetails = () => {
           })}
         </div>
       </aside>
-      <main className="flex h-[90.8vh] flex-col py-4 pr-4">
+      <main className="flex h-[90.8vh] flex-col py-4 pr-4 w-full">
         <div className="markdown-content max-h-[80vh] overflow-y-scroll bg-[#1D1D1D] px-4 py-8">
           <ReactMarkdown>{content}</ReactMarkdown>
         </div>

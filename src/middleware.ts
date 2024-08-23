@@ -1,12 +1,26 @@
 import { NextRequest, NextResponse } from "next/server"
+import { cookies } from "next/headers"
+import * as jose from 'jose'
 
 export const middleware = async (req: NextRequest) => {
-    let { pathname } = req.nextUrl
+    let { pathname } = req.nextUrl;
+    const userProtectedRoutes = ["/settings"]
+    const courseProtectedRoutes = /^\/courses\/[^\/]+\/taken\/[^\/]+$/;
+    const isFile = pathname.match(/\.[^\/]+$/);
 
-    let redirectedRoutes = ['/courses']
-    let protectedRoutes = [];
-    console.log(pathname)
-    if (redirectedRoutes.includes(pathname)){
-        return NextResponse.redirect(new URL('/all-courses/', req.url))
+
+    if (courseProtectedRoutes.test(pathname) && !isFile){
+        const cookie = cookies();
+
+        let loginCookie = cookie.get('login');
+
+        if (!loginCookie) return NextResponse.redirect(new URL('/sign/', req.url));
+
+        try {
+            const {payload} = await jose.jwtVerify(loginCookie.value, new TextEncoder().encode(process.env.JWT_SECRET));
+
+        } catch (error) {
+            return NextResponse.redirect(new URL('/log', req.url))
+        }
     }
 }
