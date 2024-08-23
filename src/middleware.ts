@@ -13,7 +13,7 @@ export const middleware = async (req: NextRequest) => {
         const cookie = cookies();
 
         let loginCookie = cookie.get('login');
-
+        console.log(loginCookie)
         if (!loginCookie) return NextResponse.redirect(new URL('/log/', req.url));
 
         try {
