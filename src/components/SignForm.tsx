@@ -3,18 +3,19 @@ import { FormInputItem } from "./FormInputItem";
 import { validateFormInputs } from "../helpers/validateFormInputs";
 import Link from "next/link";
 import { FormInputProps } from "@/interfaces/interfaces";
+import { createUser } from "@/react-query/createUser";
 
 export const SignForm = ({FormInput}: {FormInput: FormInputProps[]}) => {
   const [policy, setPolicy] = useState(false);
   const [isError, setIsError] = useState(false);
   const [Error, setError] = useState("Unknown");
 
-  const handleValidation: FormEventHandler<HTMLFormElement> = (ev) => {
+  const handleValidation: FormEventHandler<HTMLFormElement> = async (ev) => {
     ev.preventDefault();
 
-    let isValid = validateFormInputs(ev.currentTarget.children);
-    if (typeof isValid === "string") {
-      let errorMsg = isValid;
+    let userValidation = validateFormInputs(ev.currentTarget.children);
+    if (typeof userValidation === "string") {
+      let errorMsg = userValidation;
 
       setIsError(true);
       setError(errorMsg);
@@ -23,8 +24,10 @@ export const SignForm = ({FormInput}: {FormInput: FormInputProps[]}) => {
         setIsError(false);
         setError("Unknown");
       }, 3000);
-    } else if (typeof isValid === "boolean") {
-
+    } else if (Array.isArray(userValidation)) {
+      let userInfo = userValidation;
+      let [firstName, lastName, email, password] = userInfo;
+      await createUser({firstName, lastName, email, password});
     }
   };
 
@@ -37,7 +40,7 @@ export const SignForm = ({FormInput}: {FormInput: FormInputProps[]}) => {
       itemType="https://schema.org/CommunicateAction"
     >
       {FormInput.map((item) => (
-          <FormInputItem {...item} key={item.nameID}/>
+          <FormInputItem {...item} key={item.labelText}/>
       ))}
       <div className="flex flex-col justify-center gap-y-2">
         <div className="flex flex-col gap-y-6">
