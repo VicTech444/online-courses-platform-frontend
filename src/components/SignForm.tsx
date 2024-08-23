@@ -27,7 +27,8 @@ export const SignForm = ({FormInput}: {FormInput: FormInputProps[]}) => {
     } else if (Array.isArray(userValidation)) {
       let userInfo = userValidation;
       let [firstName, lastName, email, password] = userInfo;
-      await createUser({firstName, lastName, email, password});
+      let response = await createUser({firstName, lastName, email, password});
+      console.log(response)
     }
   };
 

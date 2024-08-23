@@ -3,18 +3,19 @@ import { FormInputItem } from "./FormInputItem";
 import { validateFormInputs } from "../helpers/validateFormInputs";
 import Link from "next/link";
 import { FormInputProps } from "@/interfaces/interfaces";
+import { logUser } from "@/react-query/logUser";
 
 export const LoginForm = ({FormInput}: {FormInput: FormInputProps[]}) => {
   const [rememberMe, setRememberMe] = useState(true);
   const [isError, setIsError] = useState(false);
   const [Error, setError] = useState("Unknown");
 
-  const handleValidation: FormEventHandler<HTMLFormElement> = (ev) => {
+  const handleValidation: FormEventHandler<HTMLFormElement> = async (ev) => {
     ev.preventDefault();
 
-    let isValid = validateFormInputs(ev.currentTarget.children);
-    if (typeof isValid === "string") {
-      let errorMsg = isValid;
+    let userValidation = validateFormInputs(ev.currentTarget.children);
+    if (typeof userValidation === "string") {
+      let errorMsg = userValidation;
 
       setIsError(true);
       setError(errorMsg);
@@ -23,8 +24,10 @@ export const LoginForm = ({FormInput}: {FormInput: FormInputProps[]}) => {
         setIsError(false);
         setError("Unknown");
       }, 3000);
-    } else if (typeof isValid === "boolean") {
-      
+    } else if (Array.isArray(userValidation)) {
+      let userInfo = userValidation;
+      let [email, password] = userInfo;
+      logUser({email, password})
     }
   };
 
