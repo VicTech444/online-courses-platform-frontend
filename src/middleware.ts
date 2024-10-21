@@ -14,7 +14,7 @@ export const middleware = async (req: NextRequest) => {
         const cookieHeader = req.headers.get('cookie') || '';
         const cookies = parse(cookieHeader);
 
-        console.log(cookies.loginOnlineCourse)
+        console.log(cookies)
         // if (!loginCookie) return NextResponse.redirect(new URL('/log/', req.url));
 
         // try {
