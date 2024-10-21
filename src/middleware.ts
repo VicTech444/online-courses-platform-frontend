@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { cookies } from "next/headers"
 import * as jose from 'jose'
+import { parse } from 'cookie'
 
 export const middleware = async (req: NextRequest) => {
     let { pathname } = req.nextUrl;
@@ -9,11 +10,11 @@ export const middleware = async (req: NextRequest) => {
     const isFile = pathname.match(/\.[^\/]+$/);
 
 
-    if (courseProtectedRoutes.test(pathname) && !isFile){
-        const cookie = cookies();
+    if (courseProtectedRoutes.test(pathname) && !isFile) {
+        const cookieHeader = req.headers.get('cookie') || '';
+        const cookies = parse(cookieHeader);
 
-        let loginCookie = cookie.get('login');
-        console.log(loginCookie)
+        console.log(cookies.loginOnlineCourse)
         // if (!loginCookie) return NextResponse.redirect(new URL('/log/', req.url));
 
         // try {

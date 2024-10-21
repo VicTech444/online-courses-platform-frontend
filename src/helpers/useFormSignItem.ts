@@ -8,7 +8,7 @@ export const signItemList = (): FormInputProps[] => {
             type: "text",
             placeholder: "You name goes here",
             kind: "input",
-            minLength: 5,
+            minLength: 2,
             gridSpace: 'sm:col-start-1'
         }, 
         {
@@ -17,7 +17,7 @@ export const signItemList = (): FormInputProps[] => {
             type: "text",
             placeholder: "Your last name goes here",
             kind: "input",
-            minLength: 5,
+            minLength: 2,
             gridSpace: 'sm:col-start-2'
         }, 
         {
